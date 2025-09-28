@@ -6,20 +6,31 @@ import { useState } from "react"
 
 export function Header() {
   const [showToast, setShowToast] = useState(false)
-    const handleCallClick = (e: React.MouseEvent) => {
-      const isMobile = window.innerWidth <= 768
-      const phoneNumber = "+917021042122"
-  
-      if (isMobile) return // let tel: link work normally
-  
-      // Prevent navigation on desktop
-      e.preventDefault()
-  
-      navigator.clipboard.writeText(phoneNumber).then(() => {
-        setShowToast(true)
-        setTimeout(() => setShowToast(false), 3000)
-      })
-    }
+const handleCallClick = (e: React.MouseEvent) => {
+  const isMobile = window.innerWidth <= 768;
+  const phoneNumber = "+917021042122";
+
+  if (isMobile) {
+    // Create a temporary <a> tag with tel: link
+    const tempLink = document.createElement("a");
+    tempLink.href = `tel:${phoneNumber}`;
+    tempLink.style.display = "none"; // Hide it
+    document.body.appendChild(tempLink);
+    tempLink.click(); // Trigger the call
+    document.body.removeChild(tempLink); // Clean up
+    return;
+  }
+
+  // Prevent navigation on desktop
+  e.preventDefault();
+
+  // Copy to clipboard on desktop
+  navigator.clipboard.writeText(phoneNumber).then(() => {
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 3000);
+  });
+};
+
 
   return (
     <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
