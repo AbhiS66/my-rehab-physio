@@ -1,7 +1,26 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { Phone } from "lucide-react"
+import { useState } from "react"
 
 export function Header() {
+  const [showToast, setShowToast] = useState(false)
+    const handleCallClick = (e: React.MouseEvent) => {
+      const isMobile = window.innerWidth <= 768
+      const phoneNumber = "+917021042122"
+  
+      if (isMobile) return // let tel: link work normally
+  
+      // Prevent navigation on desktop
+      e.preventDefault()
+  
+      navigator.clipboard.writeText(phoneNumber).then(() => {
+        setShowToast(true)
+        setTimeout(() => setShowToast(false), 3000)
+      })
+    }
+
   return (
     <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -31,10 +50,17 @@ export function Header() {
           </nav>
 
           {/* Contact Button */}
-          <Button className="bg-primary hover:bg-primary/90 text-white">
+          <Button onClick={handleCallClick} className="bg-primary hover:bg-primary/90 text-white">
             <Phone className="w-4 h-4 mr-2" />
             Call +91-7021042122
           </Button>
+
+        {/* Toast */}
+        {showToast && (
+          <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-black text-white px-4 py-2 rounded shadow-lg z-50 transition-opacity duration-300">
+            Phone number copied to clipboard!
+          </div>
+        )}
         </div>
       </div>
     </header>

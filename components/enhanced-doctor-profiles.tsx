@@ -19,7 +19,7 @@ export function EnhancedDoctorProfiles() {
           <Card className="p-8 hover:shadow-xl transition-shadow">
             <div className="text-center mb-6">
               <h3 className="text-2xl font-bold text-gray-900 mb-2">Dr. Avdhoot Shimpi</h3>
-              <p className="text-gray-600 mb-3">BPTh, MPTh (Orthopedics)</p>
+              <p className="text-gray-600 mb-3">BPTh (Orthopedics)</p>
               <Badge variant="secondary" className="bg-green-100 text-green-800 mb-4">
                 Senior Orthopedic Physiotherapist
               </Badge>
@@ -31,7 +31,7 @@ export function EnhancedDoctorProfiles() {
                 <div>
                   <h4 className="font-semibold text-gray-900">Education & Qualifications</h4>
                   <p className="text-sm text-gray-600">
-                    Master's in Orthopedic Physiotherapy from Mumbai University. Certified in Manual Therapy and Sports
+                    Bachelor's in Orthopedic Physiotherapy from Mumbai University. Certified in Manual Therapy and Sports
                     Rehabilitation.
                   </p>
                 </div>
@@ -53,7 +53,7 @@ export function EnhancedDoctorProfiles() {
                 <div>
                   <h4 className="font-semibold text-gray-900">Experience</h4>
                   <p className="text-sm text-gray-600">
-                    8+ years of clinical experience with expertise in treating complex orthopedic conditions.
+                    5+ years of clinical experience with expertise in treating complex orthopedic conditions.
                     Specialized training in home physiotherapy services.
                   </p>
                 </div>
@@ -76,7 +76,7 @@ export function EnhancedDoctorProfiles() {
           <Card className="p-8 hover:shadow-xl transition-shadow">
             <div className="text-center mb-6">
               <h3 className="text-2xl font-bold text-gray-900 mb-2">Dr. Prajna Shetty</h3>
-              <p className="text-gray-600 mb-3">BPTh, MPTh (Neurology)</p>
+              <p className="text-gray-600 mb-3">BPTh (Neurology)</p>
               <Badge variant="secondary" className="bg-blue-100 text-blue-800 mb-4">
                 Senior Neurological Physiotherapist
               </Badge>
@@ -88,7 +88,7 @@ export function EnhancedDoctorProfiles() {
                 <div>
                   <h4 className="font-semibold text-gray-900">Education & Qualifications</h4>
                   <p className="text-sm text-gray-600">
-                    Master's in Neurological Physiotherapy. Certified in NDT (Neuro-Developmental Treatment) and PNF
+                    Bachelor's in Neurological Physiotherapy. Expert in NDT (Neuro-Developmental Treatment) and PNF
                     techniques.
                   </p>
                 </div>
@@ -110,7 +110,7 @@ export function EnhancedDoctorProfiles() {
                 <div>
                   <h4 className="font-semibold text-gray-900">Experience</h4>
                   <p className="text-sm text-gray-600">
-                    7+ years specializing in neurological rehabilitation with extensive experience in home-based
+                    5+ years specializing in neurological rehabilitation with extensive experience in home-based
                     neuro-physiotherapy treatments.
                   </p>
                 </div>
@@ -133,7 +133,7 @@ export function EnhancedDoctorProfiles() {
           <Card className="p-8 hover:shadow-xl transition-shadow">
             <div className="text-center mb-6">
               <h3 className="text-2xl font-bold text-gray-900 mb-2">Dr. Prerana Patil</h3>
-              <p className="text-gray-600 mb-3">BPTh, MPTh (Sports Medicine)</p>
+              <p className="text-gray-600 mb-3">BPTh</p>
               <Badge variant="secondary" className="bg-orange-100 text-orange-800 mb-4">
                 Senior Sports Physiotherapist
               </Badge>
@@ -145,7 +145,7 @@ export function EnhancedDoctorProfiles() {
                 <div>
                   <h4 className="font-semibold text-gray-900">Education & Qualifications</h4>
                   <p className="text-sm text-gray-600">
-                    Master's in Sports Medicine & Physiotherapy. Certified in Dry Needling, Kinesio Taping, and Athletic
+                    Bachelor's in Physiotherapy. Certified in Dry Needling, Kinesio Taping, and Athletic
                     Performance Enhancement.
                   </p>
                 </div>
@@ -167,7 +167,7 @@ export function EnhancedDoctorProfiles() {
                 <div>
                   <h4 className="font-semibold text-gray-900">Experience</h4>
                   <p className="text-sm text-gray-600">
-                    6+ years in sports physiotherapy with experience treating professional athletes and weekend
+                    5+ years in sports physiotherapy with experience treating professional athletes and weekend
                     warriors. Expert in injury prevention strategies.
                   </p>
                 </div>
