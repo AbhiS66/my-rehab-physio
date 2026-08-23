@@ -30,8 +30,14 @@ const AREAS = [
 const LABEL = "text-xs font-semibold uppercase tracking-[0.22em] text-background/50"
 
 export function Footer() {
+  /* Bottom padding reserves the mobile call bar's exact height (+ safe area)
+     below the copyright row, so the bar sits flush on the dark ground at
+     full scroll — no cream strip, nothing hidden. Desktop needs none. */
   return (
-    <footer id="contact" className="relative overflow-hidden bg-foreground text-background">
+    <footer
+      id="contact"
+      className="relative overflow-hidden bg-foreground text-background pb-[calc(3.5rem+env(safe-area-inset-bottom))] lg:pb-0"
+    >
       <div className="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 xl:px-20 pt-16 lg:pt-20 pb-14">
         {/* Colophon grid — brand/phone, indexed locations ledger, hours + coverage */}
         <div className="grid lg:grid-cols-12 gap-12">

@@ -38,6 +38,7 @@ export function CallButton({
         variant === "solid"
           ? "bg-primary text-primary-foreground hover:bg-primary/90"
           : "bg-primary-foreground text-primary hover:bg-primary-foreground/90",
+        className,
       )}
     >
       <a href="tel:+917021042122" onClick={handleClick}>

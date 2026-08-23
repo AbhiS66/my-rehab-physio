@@ -156,24 +156,20 @@ export function HomePhysiotherapySEO() {
           </Reveal>
           <Reveal delay={220}>
             <p className="text-primary-foreground text-lg max-w-xl mb-10 lg:mb-12">
-              Call us at{" "}
-              <a href="tel:+917021042122" className="font-semibold underline underline-offset-4">
-                +91-7021042122
-              </a>{" "}
-              to schedule your home visit
+              Call us to schedule your home visit
             </p>
           </Reveal>
 
-          {/* THE number. Underline sweeps in on hover/focus instead of an opacity fade. */}
+          {/* The number — display-sized but proportionate; underline sweeps in on hover/focus. */}
           <Reveal delay={320}>
             <a
               href="tel:+917021042122"
-              className="group relative inline-block font-display text-[clamp(2.6rem,11.5vw,9.5rem)] leading-none tracking-[-0.02em] whitespace-nowrap"
+              className="group relative inline-block font-display text-3xl sm:text-5xl lg:text-6xl leading-none tracking-tight whitespace-nowrap"
             >
               <span className="transition-opacity duration-300 group-hover:opacity-90">+91-7021042122</span>
               <span
                 aria-hidden="true"
-                className="absolute left-0 -bottom-2 lg:-bottom-4 h-[3px] lg:h-[5px] w-full origin-left scale-x-0 bg-primary-foreground transition-transform duration-500 ease-out group-hover:scale-x-100 group-focus-visible:scale-x-100 motion-reduce:transition-none"
+                className="absolute left-0 -bottom-1.5 lg:-bottom-2 h-[3px] w-full origin-left scale-x-0 bg-primary-foreground transition-transform duration-500 ease-out group-hover:scale-x-100 group-focus-visible:scale-x-100 motion-reduce:transition-none"
               />
             </a>
           </Reveal>

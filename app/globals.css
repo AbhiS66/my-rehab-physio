@@ -212,6 +212,63 @@
   }
 }
 
+/* ------------------------------------------------------------------ */
+/* Recovery Spine — scroll-linked progress (components/scroll-spine.tsx). */
+/* The engine writes --spine-p (0→1 document progress) onto the two     */
+/* [data-spine-progress] nodes only; these rules consume it. Fallback 0 */
+/* means absence: no-JS, print, and pre-hydration see today's page.     */
+/* ------------------------------------------------------------------ */
+
+/* Index-rule hairline under the untouched 3px masthead rule */
+.spine-fill {
+  height: 1px;
+  background: var(--primary);
+  opacity: 0.65;
+  transform: scaleX(var(--spine-p, 0));
+  transform-origin: left;
+}
+
+/* The drawn spine: dash model driven by the CSS var */
+.spine-rail .spine-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: calc(1 - var(--spine-p, 0));
+}
+
+/* Reduced motion: the spine stays a fully drawn orienting device — just not
+   animated; state flips are instant. The hairline is user-initiated scroll
+   feedback (not an autonomous animation) and stays, without transition. */
+@media (prefers-reduced-motion: reduce) {
+  .spine-rail .spine-draw {
+    stroke-dashoffset: 0 !important;
+  }
+  .spine-fill,
+  .spine-rail a,
+  .spine-rail a * {
+    transition: none !important;
+  }
+}
+
+/* Gates — the rail is marginalia for a precision pointer with scripting on;
+   the hairline additionally hides under no-JS/print for cleanliness. Both
+   fall back to the exact pre-spine page. */
+@media print {
+  .spine-rail,
+  .spine-fill {
+    display: none !important;
+  }
+}
+@media (scripting: none) {
+  .spine-rail,
+  .spine-fill {
+    display: none !important;
+  }
+}
+@media (hover: none) and (pointer: coarse) {
+  .spine-rail {
+    display: none !important;
+  }
+}
+
 /* Printed or snapshot-rendered pages always show every section */
 @media print {
   [data-reveal],

@@ -8,10 +8,11 @@ import { HomePhysiotherapySEO } from "@/components/home-physiotherapy-seo"
 import { Footer } from "@/components/footer"
 import { MobileCallBar } from "@/components/mobile-call-bar"
 import { Reveal } from "@/components/reveal"
+import { ScrollSpine } from "@/components/scroll-spine"
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background pb-[calc(4rem+env(safe-area-inset-bottom))] lg:pb-0">
+    <div className="min-h-screen bg-background">
       <Header />
       <BreadcrumbNav />
       <main id="main" tabIndex={-1}>
@@ -22,6 +23,7 @@ export default function Home() {
         <HomePhysiotherapySEO />
       </main>
       <Footer />
+      <ScrollSpine />
       <MobileCallBar />
     </div>
   )

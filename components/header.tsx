@@ -80,7 +80,7 @@ export function Header() {
           </nav>
 
           {/* Contact — tap-to-call on mobile, copy-to-clipboard on desktop */}
-          <CallButton className="hidden sm:inline-block" />
+          <CallButton className="hidden sm:inline-flex" />
           <a
             href="tel:+917021042122"
             aria-label="Call My Rehab Physio"
@@ -93,6 +93,11 @@ export function Header() {
 
       {/* Masthead double rule — the newspaper device: accent bar over hairline */}
       <div aria-hidden="true" className="h-[3px] bg-primary" />
+
+      {/* Index-rule progress hairline — additive 1px rule that fills with scroll
+          progress (--spine-p written by components/scroll-spine.tsx; fallback
+          0 means absence, so no-JS/print see today's exact header) */}
+      <div aria-hidden="true" data-spine-progress className="spine-fill" />
 
       {/* Mobile trust strip */}
       <div className="lg:hidden border-t border-border">
