@@ -21,13 +21,13 @@ export function MobileCallBar() {
 
   return (
     <div
-      className={`fixed inset-x-0 bottom-0 z-50 lg:hidden transition-transform duration-300 ease-out ${
+      className={`fixed inset-x-0 bottom-0 z-50 lg:hidden pb-[env(safe-area-inset-bottom)] transition-transform duration-300 ease-out motion-reduce:transition-none ${
         show ? "translate-y-0" : "translate-y-full"
       }`}
     >
       <a
         href="tel:+917021042122"
-        className="flex items-center justify-center gap-2 bg-primary text-primary-foreground py-4 text-base font-semibold shadow-[0_-8px_30px_-10px_rgba(60,28,15,0.5)]"
+        className="flex items-center justify-center gap-2 bg-primary py-4 text-base font-semibold text-primary-foreground shadow-[0_-8px_30px_-10px_rgba(60,28,15,0.5)] transition-colors active:bg-primary/90"
       >
         <Phone className="w-4 h-4" />
         Call now · +91-7021042122

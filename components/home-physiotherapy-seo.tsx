@@ -102,7 +102,7 @@ export function HomePhysiotherapySEO() {
           </Reveal>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-10">
             {AREAS.map((group, gi) => (
-              <Reveal key={group.heading} delay={gi * 60}>
+              <Reveal key={group.heading} delay={gi * 40}>
                 <div>
                   <h4 className="font-display text-lg text-foreground border-b border-border pb-3 mb-4 flex items-baseline justify-between gap-3">
                     {group.heading}
@@ -125,43 +125,61 @@ export function HomePhysiotherapySEO() {
         </div>
       </section>
 
-      {/* Finale — full-bleed terracotta, the page's loudest moment */}
+      {/* Finale — full-bleed terracotta, the page's loudest moment. Staged as
+          one descending beat; the giant number lands last. */}
       <section aria-labelledby="book-home-visit" className="relative bg-primary text-primary-foreground overflow-hidden">
-        <MovementLine className="absolute -right-16 -bottom-12 h-72 w-72 lg:h-[26rem] lg:w-[26rem] text-primary-foreground/10" />
-        <div className="relative max-w-6xl mx-auto px-5 sm:px-8 py-16 lg:py-24">
-          <ul
-            className="flex flex-wrap gap-x-4 gap-y-2 text-xs uppercase tracking-[0.2em] text-primary-foreground/95 mb-8 lg:mb-10"
-            role="list"
-          >
-            {FINALE_BADGES.map((tag) => (
-              <li key={tag} className="flex items-center">
-                <span aria-hidden="true" className="w-1 h-1 bg-primary-foreground/70 rounded-full mr-2.5 shrink-0" />
-                {tag}
-              </li>
-            ))}
-          </ul>
+        <Reveal className="absolute -right-16 -bottom-12 h-72 w-72 lg:h-[26rem] lg:w-[26rem]">
+          <MovementLine draw="view" className="h-full w-full text-primary-foreground/20" />
+        </Reveal>
+        <div className="relative max-w-6xl mx-auto px-5 sm:px-8 py-20 lg:py-28 grain">
+          <Reveal>
+            <ul
+              className="flex flex-wrap gap-x-4 gap-y-2 text-xs uppercase tracking-[0.2em] text-primary-foreground/95 mb-8 lg:mb-10"
+              role="list"
+            >
+              {FINALE_BADGES.map((tag) => (
+                <li key={tag} className="flex items-center">
+                  <span aria-hidden="true" className="w-1 h-1 bg-primary-foreground/70 rounded-full mr-2.5 shrink-0" />
+                  {tag}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
 
-          <h2
-            id="book-home-visit"
-            className="font-display text-4xl sm:text-5xl lg:text-[4rem] leading-[1.02] tracking-tight max-w-3xl mb-6"
-          >
-            Book Your Home Physiotherapy Session Today
-          </h2>
-          <p className="text-primary-foreground text-lg max-w-xl mb-10 lg:mb-12">
-            Call us at{" "}
-            <a href="tel:+917021042122" className="font-semibold underline underline-offset-4">
-              +91-7021042122
-            </a>{" "}
-            to schedule your home visit
-          </p>
+          <Reveal delay={100}>
+            <h2
+              id="book-home-visit"
+              className="font-display text-4xl sm:text-5xl lg:text-[3.5rem] leading-[1.02] tracking-tight max-w-3xl mb-6"
+            >
+              Book Your Home Physiotherapy Session Today
+            </h2>
+          </Reveal>
+          <Reveal delay={220}>
+            <p className="text-primary-foreground text-lg max-w-xl mb-10 lg:mb-12">
+              Call us at{" "}
+              <a href="tel:+917021042122" className="font-semibold underline underline-offset-4">
+                +91-7021042122
+              </a>{" "}
+              to schedule your home visit
+            </p>
+          </Reveal>
 
-          <a
-            href="tel:+917021042122"
-            className="inline-block font-display text-5xl sm:text-7xl lg:text-8xl tracking-tight leading-none hover:opacity-80 transition-opacity"
-          >
-            +91-7021042122
-          </a>
-          <p className="mt-6 text-sm text-primary-foreground/95">Monday – Saturday · Home visits available</p>
+          {/* THE number. Underline sweeps in on hover/focus instead of an opacity fade. */}
+          <Reveal delay={320}>
+            <a
+              href="tel:+917021042122"
+              className="group relative inline-block font-display text-[clamp(2.6rem,11.5vw,9.5rem)] leading-none tracking-[-0.02em] whitespace-nowrap"
+            >
+              <span className="transition-opacity duration-300 group-hover:opacity-90">+91-7021042122</span>
+              <span
+                aria-hidden="true"
+                className="absolute left-0 -bottom-2 lg:-bottom-4 h-[3px] lg:h-[5px] w-full origin-left scale-x-0 bg-primary-foreground transition-transform duration-500 ease-out group-hover:scale-x-100 group-focus-visible:scale-x-100 motion-reduce:transition-none"
+              />
+            </a>
+          </Reveal>
+          <Reveal delay={420}>
+            <p className="mt-6 text-sm text-primary-foreground/95">Monday – Saturday · Home visits available</p>
+          </Reveal>
         </div>
       </section>
     </>

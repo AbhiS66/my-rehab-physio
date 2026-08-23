@@ -4,11 +4,14 @@ import { useEffect, useRef, useState, type ReactNode } from "react"
 import { cn } from "@/lib/utils"
 
 /**
- * Scroll-triggered fade + slide-up reveal. Calm and clinical: ~300ms, no bounce.
- * Renders as a div by default, or as `li` so it can wrap list items without
- * breaking ul semantics. Content is never hidden from users who opt out of
- * motion (it renders instantly under prefers-reduced-motion), browsers without
- * scripting (globals.css), or print (globals.css).
+ * Scroll-triggered fade + slide-up reveal. Calm and clinical: expo-out settle,
+ * no bounce. Renders as a div by default, or as `li` so it can wrap list items
+ * without breaking ul semantics.
+ *
+ * The shown state is published as `data-shown` so descendant treatments (ghost
+ * settles, image settles, path draws) in globals.css can key off it. Content is
+ * never hidden from users who opt out of motion (renders instantly under
+ * prefers-reduced-motion), browsers without scripting (globals.css), or print.
  */
 export function Reveal({
   children,
@@ -57,12 +60,13 @@ export function Reveal({
     <Tag
       ref={ref}
       data-reveal=""
+      data-shown={visible ? "true" : "false"}
       className={cn(
-        "transition-all duration-300 ease-out will-change-transform motion-reduce:transition-none",
-        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
+        "transition-[opacity,transform] duration-[650ms] ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none",
+        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3 will-change-transform",
         className,
       )}
-      style={{ transitionDelay: `${delay}ms` }}
+      style={{ transitionDelay: visible ? undefined : `${delay}ms` }}
     >
       {children}
     </Tag>

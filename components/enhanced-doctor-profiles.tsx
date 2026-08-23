@@ -9,12 +9,14 @@ type Doctor = {
   badge: string
   details: DoctorDetail[]
   languages?: string[]
+  photo?: { src: string; alt: string }
 }
 
 const DOCTORS: Doctor[] = [
   {
     initials: "AS",
     name: "Dr. Avdhoot Shimpi",
+    photo: { src: "/dr-avdhoot-shimpi.jpg", alt: "Portrait of Dr. Avdhoot Shimpi" },
     degree: "BPTh (Orthopedics)",
     badge: "Senior Orthopedic Physiotherapist",
     languages: ["Hindi", "Marathi", "English"],
@@ -91,14 +93,14 @@ const LABEL = "text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreg
 
 export function EnhancedDoctorProfiles() {
   return (
-    <section id="team" className="bg-background py-16 lg:py-24 px-5 sm:px-8">
+    <section id="team" className="bg-background py-20 lg:py-28 px-5 sm:px-8">
       <div className="max-w-6xl mx-auto">
         {/* Asymmetric section header — intro offset right */}
         <Reveal>
           <div className="grid lg:grid-cols-12 gap-6 lg:gap-12 items-end mb-12 lg:mb-14">
             <div className="lg:col-span-7">
               <p className={`${LABEL} !text-primary mb-4`}>The humans behind your recovery</p>
-              <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] text-foreground leading-tight max-w-xl">
+              <h2 className="text-[2rem] sm:text-[2.5rem] lg:text-[3rem] text-foreground leading-tight max-w-xl">
                 Meet Our Expert Physiotherapy Team
               </h2>
             </div>
@@ -109,58 +111,67 @@ export function EnhancedDoctorProfiles() {
           </div>
         </Reveal>
 
-        {/* Dossier rows — identity rail alternates sides, oversized initials watermark */}
+        {/* Dossier rows — identity rail alternates sides, oversized initials watermark.
+            Rail lands first; the four ledger cells cascade in after it. */}
         <div>
           {DOCTORS.map((doc, i) => (
-            <Reveal key={doc.name}>
-              <article
-                className={`relative grid lg:grid-cols-12 gap-x-8 gap-y-6 py-10 lg:py-12 ${
-                  i > 0 ? "border-t border-border" : ""
-                }`}
-              >
+            <article
+              key={doc.name}
+              className={`relative grid lg:grid-cols-12 gap-x-8 gap-y-6 py-12 lg:py-14 ${
+                i > 0 ? "border-t border-border" : ""
+              }`}
+            >
+              {/* Identity rail */}
+              <Reveal className={`lg:col-span-4 relative ${i % 2 === 1 ? "lg:order-2" : ""}`}>
                 <span
                   aria-hidden="true"
-                  className={`pointer-events-none select-none absolute -top-3 font-display text-[7rem] lg:text-[9rem] leading-none text-primary/[0.08] ${
-                    i % 2 === 0 ? "right-0" : "left-0"
+                  className={`ghost-settle pointer-events-none select-none absolute -top-8 font-display text-[7rem] lg:text-[9rem] leading-none text-primary/[0.08] ${
+                    i % 2 === 0 ? "-right-2" : "-left-2"
                   }`}
                 >
                   {doc.initials}
                 </span>
-
-                {/* Identity rail */}
-                <div className={`lg:col-span-4 relative ${i % 2 === 1 ? "lg:order-2" : ""}`}>
-                  <p aria-hidden="true" className="font-display text-sm text-primary/80 mb-3 tabular-nums">
-                    0{i + 1}
+                <p aria-hidden="true" className="font-display text-sm text-primary/80 mb-3 tabular-nums">
+                  0{i + 1}
+                </p>
+                {doc.photo && (
+                  <img
+                    src={doc.photo.src}
+                    alt={doc.photo.alt}
+                    width={300}
+                    height={230}
+                    loading="lazy"
+                    className="mb-6 w-44 max-w-full aspect-[4/3] object-cover object-top rounded-none ring-1 ring-border shadow-sm grayscale hover:[filter:none] transition-[filter] duration-700"
+                  />
+                )}
+                <h3 className="font-display text-4xl lg:text-5xl text-foreground leading-[1.05]">{doc.name}</h3>
+                <p className="text-muted-foreground mt-2">{doc.degree}</p>
+                <p className="mt-5 inline-flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+                  <span className="w-1.5 h-1.5 bg-primary rounded-full shrink-0" />
+                  {doc.badge}
+                </p>
+                {doc.languages && (
+                  <p className="mt-6">
+                    <span className={`${LABEL} block mb-2`}>Languages</span>
+                    <span className="text-sm text-foreground">{doc.languages.join(" · ")}</span>
                   </p>
-                  <h3 className="font-display text-3xl lg:text-4xl text-foreground leading-tight">{doc.name}</h3>
-                  <p className="text-muted-foreground mt-2">{doc.degree}</p>
-                  <p className="mt-5 inline-flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
-                    <span className="w-1.5 h-1.5 bg-primary rounded-full shrink-0" />
-                    {doc.badge}
-                  </p>
-                  {doc.languages && (
-                    <p className="mt-6">
-                      <span className={`${LABEL} block mb-2`}>Languages</span>
-                      <span className="text-sm text-foreground">{doc.languages.join(" · ")}</span>
-                    </p>
-                  )}
-                </div>
+                )}
+              </Reveal>
 
-                {/* Detail ledger */}
-                <dl
-                  className={`lg:col-span-8 grid sm:grid-cols-2 gap-x-10 gap-y-7 relative ${
-                    i % 2 === 1 ? "lg:order-1" : ""
-                  }`}
-                >
-                  {doc.details.map((detail) => (
-                    <div key={detail.label} className="border-t border-border pt-4">
-                      <dt className={`${LABEL} mb-2`}>{detail.label}</dt>
-                      <dd className="text-sm text-foreground/85 leading-relaxed">{detail.text}</dd>
-                    </div>
-                  ))}
-                </dl>
-              </article>
-            </Reveal>
+              {/* Detail ledger */}
+              <dl
+                className={`lg:col-span-8 grid sm:grid-cols-2 gap-x-10 gap-y-7 relative ${
+                  i % 2 === 1 ? "lg:order-1" : ""
+                }`}
+              >
+                {doc.details.map((detail, di) => (
+                  <Reveal key={detail.label} delay={120 + di * 80} className="border-t border-border pt-4">
+                    <dt className={`${LABEL} mb-2`}>{detail.label}</dt>
+                    <dd className="text-sm text-foreground/85 leading-relaxed">{detail.text}</dd>
+                  </Reveal>
+                ))}
+              </dl>
+            </article>
           ))}
         </div>
 

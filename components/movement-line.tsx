@@ -4,8 +4,19 @@ import { cn } from "@/lib/utils"
  * The site's one visual signature: a single continuous hairline stroke that reads
  * like a stretching figure / spine curve. Rendered in terracotta at low opacity —
  * a whisper of texture, never a full illustration.
+ *
+ * draw="load" — the stroke draws itself in shortly after page load.
+ * draw="view" — draws once a parent [data-reveal] element has shown.
+ * Both are gated behind scripting+motion in globals.css; the default static
+ * stroke is what no-JS, reduced-motion, and print users see.
  */
-export function MovementLine({ className }: { className?: string }) {
+export function MovementLine({
+  className,
+  draw,
+}: {
+  className?: string
+  draw?: "load" | "view"
+}) {
   return (
     <svg
       viewBox="0 0 320 240"
@@ -19,6 +30,8 @@ export function MovementLine({ className }: { className?: string }) {
         stroke="currentColor"
         strokeWidth="1.2"
         strokeLinecap="round"
+        pathLength={1}
+        className={cn(draw === "load" && "path-draw-load", draw === "view" && "path-draw-view")}
       />
     </svg>
   )

@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Fraunces, Karla } from "next/font/google"
+import { CopyToast } from "@/components/copy-toast"
 import "./globals.css"
 
 const karla = Karla({
@@ -90,13 +91,22 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${karla.variable} ${fraunces.variable}`}>
       <body>
+        {/* Runs before first paint so the CSS motion gates (html[data-scripting])
+            are correct from the very first frame — no-JS browsers never see
+            hidden content, in any browser including Firefox. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.dataset.scripting='true'",
+          }}
+        />
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[60] focus:bg-primary focus:text-primary-foreground focus:px-3 focus:py-2 focus:rounded-md text-sm font-semibold"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[60] focus:bg-primary focus:text-primary-foreground focus:px-3 focus:py-2 text-sm font-semibold"
         >
           Skip to main content
         </a>
         {children}
+        <CopyToast />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

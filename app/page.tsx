@@ -11,16 +11,12 @@ import { Reveal } from "@/components/reveal"
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background pb-16 lg:pb-0">
+    <div className="min-h-screen bg-background pb-[calc(4rem+env(safe-area-inset-bottom))] lg:pb-0">
       <Header />
       <BreadcrumbNav />
       <main id="main" tabIndex={-1}>
         <ClinicHero />
-
-        <Reveal>
-          <AboutClinic />
-        </Reveal>
-
+        <AboutClinic />
         <ConditionsTreated />
         <EnhancedDoctorProfiles />
         <HomePhysiotherapySEO />
