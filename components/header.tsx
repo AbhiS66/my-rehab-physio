@@ -1,77 +1,59 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
+import { CallButton } from "@/components/call-button"
 import { Phone } from "lucide-react"
-import { useState } from "react"
+
+const NAV_LINKS = [
+  { label: "About", href: "#about" },
+  { label: "Locations", href: "#locations" },
+  { label: "Conditions We Treat", href: "#conditions" },
+  { label: "For Patients", href: "#home-visits" },
+  { label: "For Hospitals", href: "#contact" },
+]
 
 export function Header() {
-  const [showToast, setShowToast] = useState(false)
-const handleCallClick = (e: React.MouseEvent) => {
-  const isMobile = window.innerWidth <= 768;
-  const phoneNumber = "+917021042122";
-
-  if (isMobile) {
-    // Create a temporary <a> tag with tel: link
-    const tempLink = document.createElement("a");
-    tempLink.href = `tel:${phoneNumber}`;
-    tempLink.style.display = "none"; // Hide it
-    document.body.appendChild(tempLink);
-    tempLink.click(); // Trigger the call
-    document.body.removeChild(tempLink); // Clean up
-    return;
-  }
-
-  // Prevent navigation on desktop
-  e.preventDefault();
-
-  // Copy to clipboard on desktop
-  navigator.clipboard.writeText(phoneNumber).then(() => {
-    setShowToast(true);
-    setTimeout(() => setShowToast(false), 3000);
-  });
-};
-
-
   return (
-    <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <header className="bg-background/95 backdrop-blur border-b border-border sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center">
+          <a href="#top" className="flex items-center shrink-0">
             <img src="/mrp-logo.jpg" alt="My Rehab Physio Logo" className="h-12 w-auto" />
-          </div>
+          </a>
 
           {/* Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <a href="#" className="text-gray-700 hover:text-primary font-medium">
-              About
-            </a>
-            <a href="#" className="text-gray-700 hover:text-primary font-medium">
-              Locations
-            </a>
-            <a href="#" className="text-gray-700 hover:text-primary font-medium">
-              Conditions We Treat
-            </a>
-            <a href="#" className="text-gray-700 hover:text-primary font-medium">
-              For Patients
-            </a>
-            <a href="#" className="text-gray-700 hover:text-primary font-medium">
-              For Hospitals
-            </a>
+          <nav className="hidden lg:flex items-center" aria-label="Primary">
+            <ul className="flex items-center gap-1">
+              {NAV_LINKS.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="relative px-3 py-2 text-sm text-muted-foreground hover:text-foreground font-medium transition-colors after:absolute after:left-3 after:right-3 after:bottom-0.5 after:h-px after:bg-primary after:origin-left after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </nav>
 
-          {/* Contact Button */}
-          <Button onClick={handleCallClick} className="bg-primary hover:bg-primary/90 text-white">
-            <Phone className="w-4 h-4 mr-2" />
-            Call +91-7021042122
-          </Button>
+          {/* Contact — tap-to-call on mobile, copy-to-clipboard on desktop */}
+          <CallButton className="hidden sm:inline-block" />
+          <a
+            href="tel:+917021042122"
+            aria-label="Call My Rehab Physio"
+            className="sm:hidden inline-flex items-center justify-center w-10 h-10 rounded-md bg-primary text-primary-foreground"
+          >
+            <Phone className="w-4.5 h-4.5" />
+          </a>
+        </div>
+      </div>
 
-        {/* Toast */}
-        {showToast && (
-          <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-black text-white px-4 py-2 rounded shadow-lg z-50 transition-opacity duration-300">
-            Phone number copied to clipboard!
-          </div>
-        )}
+      {/* Mobile trust strip */}
+      <div className="lg:hidden border-t border-border">
+        <div className="max-w-7xl mx-auto px-4 py-1.5 flex items-center justify-between text-[11px] text-muted-foreground">
+          <span>Powai · Vile Parle · Chandivali</span>
+          <span>Mon–Sat · Home visits</span>
         </div>
       </div>
     </header>

@@ -1,109 +1,169 @@
-import { Card } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Home, MapPin, Clock, Users } from "lucide-react"
+import { MovementLine } from "@/components/movement-line"
+import { Reveal } from "@/components/reveal"
+
+const FEATURES = [
+  { title: "Home Physiotherapy Powai", body: "Convenient at-home treatment in Powai area" },
+  { title: "Physiotherapy Near Hiranandani", body: "Serving Hiranandani Gardens and nearby localities" },
+  { title: "Flexible Home Visits", body: "Morning and evening slots available" },
+  { title: "Expert Team", body: "Qualified physiotherapists with home care experience" },
+]
+
+const AREAS = [
+  {
+    heading: "Powai & Surroundings",
+    items: [
+      "Home Physiotherapy in Powai",
+      "Physiotherapy at Home Hiranandani Gardens",
+      "Home Physio Services Powai Lake",
+      "Physiotherapy Home Visits Powai Plaza",
+      "Home Treatment Near IIT Bombay",
+    ],
+  },
+  {
+    heading: "Chandivali & Vicinity",
+    items: [
+      "Home Physiotherapy Chandivali",
+      "Physio at Home Saki Vihar Road",
+      "Home Treatment New Mhada Colony",
+      "Physiotherapy Services Chandivali Studio",
+      "Home Visits Near Chandivali Junction",
+    ],
+  },
+  {
+    heading: "Extended Coverage",
+    items: [
+      "Home Physiotherapy Vile Parle West",
+      "Physio at Home JVPD Scheme",
+      "Home Treatment Andheri East",
+      "Physiotherapy Services Kanjurmarg",
+      "Home Visits Vikhroli West",
+    ],
+  },
+]
+
+const FINALE_BADGES = [
+  "Home Physiotherapy Powai",
+  "Physiotherapy at Home Mumbai",
+  "Home Physio Near Me",
+  "Female Physiotherapist Home Visits",
+  "Home Treatment Hiranandani",
+]
+
+const LABEL = "text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground"
 
 export function HomePhysiotherapySEO() {
   return (
-    <div className="bg-gradient-to-br from-green-50 to-blue-50 py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Home Physiotherapy Services in Powai, Mumbai</h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Professional physiotherapy treatment at your doorstep. Our expert physiotherapists provide personalized care
-            in the comfort of your home across Powai, Hiranandani Gardens, Chandivali, and surrounding areas.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          <Card className="p-6 text-center hover:shadow-lg transition-shadow">
-            <Home className="w-12 h-12 text-primary mx-auto mb-4" />
-            <h3 className="font-semibold text-gray-900 mb-2">Home Physiotherapy Powai</h3>
-            <p className="text-sm text-gray-600">Convenient at-home treatment in Powai area</p>
-          </Card>
-
-          <Card className="p-6 text-center hover:shadow-lg transition-shadow">
-            <MapPin className="w-12 h-12 text-primary mx-auto mb-4" />
-            <h3 className="font-semibold text-gray-900 mb-2">Physiotherapy Near Hiranandani</h3>
-            <p className="text-sm text-gray-600">Serving Hiranandani Gardens and nearby localities</p>
-          </Card>
-
-          <Card className="p-6 text-center hover:shadow-lg transition-shadow">
-            <Clock className="w-12 h-12 text-primary mx-auto mb-4" />
-            <h3 className="font-semibold text-gray-900 mb-2">Flexible Home Visits</h3>
-            <p className="text-sm text-gray-600">Morning and evening slots available</p>
-          </Card>
-
-          <Card className="p-6 text-center hover:shadow-lg transition-shadow">
-            <Users className="w-12 h-12 text-primary mx-auto mb-4" />
-            <h3 className="font-semibold text-gray-900 mb-2">Expert Team</h3>
-            <p className="text-sm text-gray-600">Qualified physiotherapists with home care experience</p>
-          </Card>
-        </div>
-
-        <div className="bg-white rounded-lg p-8 shadow-lg">
-          <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Areas We Cover for Home Physiotherapy</h3>
-          <div className="grid md:grid-cols-3 gap-6">
-            <div>
-              <h4 className="font-semibold text-gray-900 mb-3">Powai & Surroundings</h4>
-              <ul className="text-sm text-gray-600 space-y-2">
-                <li>• Home Physiotherapy in Powai</li>
-                <li>• Physiotherapy at Home Hiranandani Gardens</li>
-                <li>• Home Physio Services Powai Lake</li>
-                <li>• Physiotherapy Home Visits Powai Plaza</li>
-                <li>• Home Treatment Near IIT Bombay</li>
-              </ul>
+    <>
+      <section id="home-visits" className="bg-secondary/40 py-16 lg:py-24 px-5 sm:px-8">
+        <div className="max-w-6xl mx-auto">
+          {/* Asymmetric header — intro offset right */}
+          <Reveal>
+            <div className="grid lg:grid-cols-12 gap-6 lg:gap-12 items-end mb-12">
+              <div className="lg:col-span-7">
+                <p className={`${LABEL} !text-primary mb-4`}>Physiotherapy at home</p>
+                <h2 className="text-3xl sm:text-4xl text-foreground leading-tight max-w-xl">
+                  Home Physiotherapy Services in Powai, Mumbai
+                </h2>
+              </div>
+              <p className="lg:col-span-5 text-muted-foreground leading-relaxed lg:border-l lg:border-border lg:pl-8">
+                Professional physiotherapy treatment at your doorstep. Our expert physiotherapists provide personalized
+                care in the comfort of your home across Powai, Hiranandani Gardens, Chandivali, and surrounding areas.
+              </p>
             </div>
-            <div>
-              <h4 className="font-semibold text-gray-900 mb-3">Chandivali & Vicinity</h4>
-              <ul className="text-sm text-gray-600 space-y-2">
-                <li>• Home Physiotherapy Chandivali</li>
-                <li>• Physio at Home Saki Vihar Road</li>
-                <li>• Home Treatment New Mhada Colony</li>
-                <li>• Physiotherapy Services Chandivali Studio</li>
-                <li>• Home Visits Near Chandivali Junction</li>
-              </ul>
+          </Reveal>
+
+          {/* Features — definition ledger, same grammar as the doctor detail ledgers */}
+          <Reveal delay={60}>
+            <dl className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-8 mb-14 lg:mb-16">
+              {FEATURES.map((feature) => (
+                <div key={feature.title} className="border-t-2 border-primary/30 pt-4">
+                  <dt className="font-display text-lg font-semibold text-foreground leading-snug mb-1.5">
+                    {feature.title}
+                  </dt>
+                  <dd className="text-sm text-muted-foreground leading-relaxed">{feature.body}</dd>
+                </div>
+              ))}
+            </dl>
+          </Reveal>
+
+          {/* Areas — editorial index with counts */}
+          <Reveal>
+            <div className="flex items-baseline justify-between gap-6 mb-10">
+              <h3 className="font-display text-2xl lg:text-3xl text-foreground">
+                Areas We Cover for Home Physiotherapy
+              </h3>
+              <span
+                aria-hidden="true"
+                className="font-display text-5xl lg:text-6xl leading-none text-primary/25 shrink-0"
+              >
+                15
+              </span>
             </div>
-            <div>
-              <h4 className="font-semibold text-gray-900 mb-3">Extended Coverage</h4>
-              <ul className="text-sm text-gray-600 space-y-2">
-                <li>• Home Physiotherapy Vile Parle West</li>
-                <li>• Physio at Home JVPD Scheme</li>
-                <li>• Home Treatment Andheri East</li>
-                <li>• Physiotherapy Services Kanjurmarg</li>
-                <li>• Home Visits Vikhroli West</li>
-              </ul>
-            </div>
+          </Reveal>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-10">
+            {AREAS.map((group, gi) => (
+              <Reveal key={group.heading} delay={gi * 60}>
+                <div>
+                  <h4 className="font-display text-lg text-foreground border-b border-border pb-3 mb-4 flex items-baseline justify-between gap-3">
+                    {group.heading}
+                    <span aria-hidden="true" className="text-xs text-primary/60 font-sans tracking-[0.2em]">
+                      0{gi + 1}
+                    </span>
+                  </h4>
+                  <ul className="space-y-2.5" role="list">
+                    {group.items.map((item) => (
+                      <li key={item} className="flex items-start text-sm text-muted-foreground">
+                        <span aria-hidden="true" className="w-1 h-1 rounded-full bg-primary mt-[7px] mr-3 shrink-0" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
+      </section>
 
-        <div className="mt-12 text-center">
-          <div className="flex flex-wrap justify-center gap-2 mb-6">
-            <Badge variant="secondary" className="bg-green-100 text-green-800">
-              Home Physiotherapy Powai
-            </Badge>
-            <Badge variant="secondary" className="bg-blue-100 text-blue-800">
-              Physiotherapy at Home Mumbai
-            </Badge>
-            <Badge variant="secondary" className="bg-purple-100 text-purple-800">
-              Home Physio Near Me
-            </Badge>
-            <Badge variant="secondary" className="bg-orange-100 text-orange-800">
-              Female Physiotherapist Home Visits
-            </Badge>
-            <Badge variant="secondary" className="bg-teal-100 text-teal-800">
-              Home Treatment Hiranandani
-            </Badge>
-          </div>
-          <p className="text-lg font-semibold text-gray-900 mb-2">Book Your Home Physiotherapy Session Today</p>
-          <p className="text-gray-600 mb-4">
+      {/* Finale — full-bleed terracotta, the page's loudest moment */}
+      <section aria-labelledby="book-home-visit" className="relative bg-primary text-primary-foreground overflow-hidden">
+        <MovementLine className="absolute -right-16 -bottom-12 h-72 w-72 lg:h-[26rem] lg:w-[26rem] text-primary-foreground/10" />
+        <div className="relative max-w-6xl mx-auto px-5 sm:px-8 py-16 lg:py-24">
+          <ul
+            className="flex flex-wrap gap-x-4 gap-y-2 text-xs uppercase tracking-[0.2em] text-primary-foreground/95 mb-8 lg:mb-10"
+            role="list"
+          >
+            {FINALE_BADGES.map((tag) => (
+              <li key={tag} className="flex items-center">
+                <span aria-hidden="true" className="w-1 h-1 bg-primary-foreground/70 rounded-full mr-2.5 shrink-0" />
+                {tag}
+              </li>
+            ))}
+          </ul>
+
+          <h2
+            id="book-home-visit"
+            className="font-display text-4xl sm:text-5xl lg:text-[4rem] leading-[1.02] tracking-tight max-w-3xl mb-6"
+          >
+            Book Your Home Physiotherapy Session Today
+          </h2>
+          <p className="text-primary-foreground text-lg max-w-xl mb-10 lg:mb-12">
             Call us at{" "}
-            <a href="tel:+917021042122" className="text-primary font-semibold">
+            <a href="tel:+917021042122" className="font-semibold underline underline-offset-4">
               +91-7021042122
             </a>{" "}
             to schedule your home visit
           </p>
+
+          <a
+            href="tel:+917021042122"
+            className="inline-block font-display text-5xl sm:text-7xl lg:text-8xl tracking-tight leading-none hover:opacity-80 transition-opacity"
+          >
+            +91-7021042122
+          </a>
+          <p className="mt-6 text-sm text-primary-foreground/95">Monday – Saturday · Home visits available</p>
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   )
 }
