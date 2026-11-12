@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Fraunces, Karla } from "next/font/google"
 import { CopyToast } from "@/components/copy-toast"
+import { FloatingWhatsApp } from "@/components/floating-whatsapp"
 import "./globals.css"
 
 const karla = Karla({
@@ -106,6 +107,7 @@ export default function RootLayout({
           Skip to main content
         </a>
         {children}
+        <FloatingWhatsApp />
         <CopyToast />
         <script
           type="application/ld+json"
